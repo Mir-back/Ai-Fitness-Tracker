@@ -57,7 +57,7 @@ function render() {
   const minutes = thisWeek.reduce((sum,w) => sum + Number(w.duration || 0), 0); const sessions = thisWeek.length; const goal = Number(p.sessionsPerWeek || 4);
   $('#user-name').textContent = p.name || 'Athlete'; $('#user-avatar').textContent = initials(p.name); $('.profile-initial').textContent = initials(p.name); $('#greeting-name').textContent = (p.name || 'athlete').split(' ')[0];
   $('#workout-count').textContent = state.workouts.length; $('#side-progress').innerHTML = `${sessions} <i>/ ${goal} sessions</i>`; $('#side-progress-bar').style.width = `${Math.min(100, sessions/goal*100)}%`;
-  $('#week-sessions').textContent = sessions; $('#active-minutes').textContent = minutes; $('#sessions-progress').textContent = `${Math.min(100, Math.round(sessions/goal*100))}% complete`;
+  $('#week-sessions').textContent = sessions; $('#sessions-goal').textContent = goal; $('#active-minutes').textContent = minutes; $('#sessions-progress').textContent = `${Math.min(100, Math.round(sessions/goal*100))}% complete`;
   $('#streak-days').textContent = calculateStreak(); $('#streak-value').textContent = `${calculateStreak()} ${calculateStreak() === 1 ? 'day' : 'days'}`;
   $('#streak-message').textContent = calculateStreak() ? 'A strong habit is taking shape.' : 'Start your streak with a workout today.';
   $('#hero-recommendation').textContent = rec.copy; $('#next-workout-title').textContent = rec.workout; $('#next-category').textContent = rec.category; $('#next-workout-meta').innerHTML = `${rec.duration} min <span>·</span> ${p.experience === 'beginner' ? 'Beginner friendly' : `${p.experience[0].toUpperCase()}${p.experience.slice(1)} plan`}`;
